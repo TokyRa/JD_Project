@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.Programme" table="PROGRAMME" catalog="db_21401119" optimistic-lock="version">
+        <id name="idprog" type="java.lang.Integer">
+            <column name="IDPROG" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="typeprogramme" class="DAO.Typeprogramme" fetch="select">
+            <column name="IDTP" not-null="true" />
+        </many-to-one>
+        <property name="libprog" type="string">
+            <column name="LIBPROG" length="32" />
+        </property>
+        <property name="desprog" type="string">
+            <column name="DESPROG" length="32" />
+        </property>
+        <set name="avoirResultats" table="AVOIR_RESULTAT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDPROG" not-null="true" />
+            </key>
+            <one-to-many class="DAO.AvoirResultat" />
+        </set>
+        <set name="clients" table="AFFECTERPROG" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDPROG" not-null="true" />
+            </key>
+            <many-to-many entity-name="DAO.Client">
+                <column name="IDCLI" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="affecterscs" table="AFFECTERSC" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDPROG" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Affectersc" />
+        </set>
+    </class>
+</hibernate-mapping>

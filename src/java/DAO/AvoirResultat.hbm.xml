@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.AvoirResultat" table="AVOIR_RESULTAT" catalog="db_21401119" optimistic-lock="version">
+        <composite-id name="id" class="DAO.AvoirResultatId">
+            <key-property name="idcli" type="int">
+                <column name="IDCLI" />
+            </key-property>
+            <key-property name="idscprog" type="int">
+                <column name="IDSCPROG" />
+            </key-property>
+            <key-property name="idprog" type="int">
+                <column name="IDPROG" />
+            </key-property>
+            <key-property name="idtypeex" type="int">
+                <column name="IDTYPEEX" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="client" class="DAO.Client" update="false" insert="false" fetch="select">
+            <column name="IDCLI" not-null="true" />
+        </many-to-one>
+        <many-to-one name="programme" class="DAO.Programme" update="false" insert="false" fetch="select">
+            <column name="IDPROG" not-null="true" />
+        </many-to-one>
+        <many-to-one name="seanceprogamme" class="DAO.Seanceprogamme" update="false" insert="false" fetch="select">
+            <column name="IDSCPROG" not-null="true" />
+        </many-to-one>
+        <many-to-one name="typeexercice" class="DAO.Typeexercice" update="false" insert="false" fetch="select">
+            <column name="IDTYPEEX" not-null="true" />
+        </many-to-one>
+        <property name="libres" type="string">
+            <column name="LIBRES" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.Seanceprogamme" table="SEANCEPROGAMME" catalog="db_21401119" optimistic-lock="version">
+        <id name="idscprog" type="java.lang.Integer">
+            <column name="IDSCPROG" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="seance" class="DAO.Seance" fetch="select">
+            <column name="IDSC" not-null="true" />
+        </many-to-one>
+        <many-to-one name="typeseance" class="DAO.Typeseance" fetch="select">
+            <column name="IDTS" not-null="true" />
+        </many-to-one>
+        <property name="dureesc" type="java.lang.Float">
+            <column name="DUREESC" precision="12" scale="0" />
+        </property>
+        <property name="echauffsc" type="string">
+            <column name="ECHAUFFSC" length="32" />
+        </property>
+        <property name="dessc" type="string">
+            <column name="DESSC" length="32" />
+        </property>
+        <set name="avoirResultats" table="AVOIR_RESULTAT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDSCPROG" not-null="true" />
+            </key>
+            <one-to-many class="DAO.AvoirResultat" />
+        </set>
+        <set name="contenirexes" table="CONTENIREX" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDSCPROG" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Contenirex" />
+        </set>
+    </class>
+</hibernate-mapping>

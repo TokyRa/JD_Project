@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.Typeprogramme" table="TYPEPROGRAMME" catalog="db_21401119" optimistic-lock="version">
+        <id name="idtp" type="java.lang.Integer">
+            <column name="IDTP" />
+            <generator class="identity" />
+        </id>
+        <property name="libtp" type="string">
+            <column name="LIBTP" length="32" />
+        </property>
+        <set name="programmes" table="PROGRAMME" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDTP" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Programme" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.Affectersc" table="AFFECTERSC" catalog="db_21401119" optimistic-lock="version">
+        <composite-id name="id" class="DAO.AffecterscId">
+            <key-property name="idprog" type="int">
+                <column name="IDPROG" />
+            </key-property>
+            <key-property name="idsc" type="int">
+                <column name="IDSC" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="programme" class="DAO.Programme" update="false" insert="false" fetch="select">
+            <column name="IDPROG" not-null="true" />
+        </many-to-one>
+        <many-to-one name="seance" class="DAO.Seance" update="false" insert="false" fetch="select">
+            <column name="IDSC" not-null="true" />
+        </many-to-one>
+        <property name="numsemaine" type="java.lang.Integer">
+            <column name="NUMSEMAINE" />
+        </property>
+        <property name="ordresc" type="java.lang.Integer">
+            <column name="ORDRESC" />
+        </property>
+    </class>
+</hibernate-mapping>

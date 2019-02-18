@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.Contenirex" table="CONTENIREX" catalog="db_21401119" optimistic-lock="version">
+        <composite-id name="id" class="DAO.ContenirexId">
+            <key-property name="idscprog" type="int">
+                <column name="IDSCPROG" />
+            </key-property>
+            <key-property name="idtypeex" type="int">
+                <column name="IDTYPEEX" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="seanceprogamme" class="DAO.Seanceprogamme" update="false" insert="false" fetch="select">
+            <column name="IDSCPROG" not-null="true" />
+        </many-to-one>
+        <many-to-one name="typeexercice" class="DAO.Typeexercice" update="false" insert="false" fetch="select">
+            <column name="IDTYPEEX" not-null="true" />
+        </many-to-one>
+        <property name="ordreex" type="java.lang.Integer">
+            <column name="ORDREEX" />
+        </property>
+        <property name="temps" type="java.lang.Float">
+            <column name="TEMPS" precision="12" scale="0" />
+        </property>
+        <property name="nbrep" type="java.lang.Integer">
+            <column name="NBREP" />
+        </property>
+    </class>
+</hibernate-mapping>

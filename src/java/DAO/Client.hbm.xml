@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.Client" table="CLIENT" catalog="db_21401119" optimistic-lock="version">
+        <id name="idcli" type="java.lang.Integer">
+            <column name="IDCLI" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="statutclient" class="DAO.Statutclient" fetch="select">
+            <column name="LIBSTATUT" length="32" not-null="true" />
+        </many-to-one>
+        <many-to-one name="typeabonnement" class="DAO.Typeabonnement" fetch="select">
+            <column name="LIBABON" length="32" not-null="true" />
+        </many-to-one>
+        <many-to-one name="typeclient" class="DAO.Typeclient" fetch="select">
+            <column name="IDTC" not-null="true" />
+        </many-to-one>
+        <property name="nomcli" type="string">
+            <column name="NOMCLI" length="32" />
+        </property>
+        <property name="prenomcli" type="string">
+            <column name="PRENOMCLI" length="32" />
+        </property>
+        <property name="datenaisscli" type="date">
+            <column name="DATENAISSCLI" length="10" />
+        </property>
+        <property name="mailcli" type="string">
+            <column name="MAILCLI" length="32" />
+        </property>
+        <property name="telcli" type="string">
+            <column name="TELCLI" length="32" />
+        </property>
+        <property name="pjcli" type="string">
+            <column name="PJCLI" length="32" />
+        </property>
+        <set name="evaluerexcercices" table="EVALUEREXCERCICE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLI" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Evaluerexcercice" />
+        </set>
+        <set name="programmes" table="AFFECTERPROG" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLI" not-null="true" />
+            </key>
+            <many-to-many entity-name="DAO.Programme">
+                <column name="IDPROG" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="avoirResultats" table="AVOIR_RESULTAT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLI" not-null="true" />
+            </key>
+            <one-to-many class="DAO.AvoirResultat" />
+        </set>
+        <set name="seancebilans" table="SEANCEBILAN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDCLI" />
+            </key>
+            <one-to-many class="DAO.Seancebilan" />
+        </set>
+    </class>
+</hibernate-mapping>

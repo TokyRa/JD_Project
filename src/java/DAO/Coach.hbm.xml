@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.Coach" table="COACH" catalog="db_21401119" optimistic-lock="version">
+        <id name="idcoach" type="java.lang.Integer">
+            <column name="IDCOACH" />
+            <generator class="identity" />
+        </id>
+        <property name="mailadmin" type="string">
+            <column name="MAILADMIN" length="32" />
+        </property>
+        <property name="mailcoach" type="string">
+            <column name="MAILCOACH" length="32" />
+        </property>
+        <property name="nomcoach" type="string">
+            <column name="NOMCOACH" length="32" />
+        </property>
+        <property name="prenomcoach" type="string">
+            <column name="PRENOMCOACH" length="32" />
+        </property>
+    </class>
+</hibernate-mapping>

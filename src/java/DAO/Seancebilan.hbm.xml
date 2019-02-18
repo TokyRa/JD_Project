@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.Seancebilan" table="SEANCEBILAN" catalog="db_21401119" optimistic-lock="version">
+        <id name="idsb" type="java.lang.Integer">
+            <column name="IDSB" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="client" class="DAO.Client" fetch="select">
+            <column name="IDCLI" />
+        </many-to-one>
+        <many-to-one name="seance" class="DAO.Seance" fetch="select">
+            <column name="IDSC" not-null="true" />
+        </many-to-one>
+        <property name="etatsb" type="string">
+            <column name="ETATSB" length="32" />
+        </property>
+        <property name="poidssb" type="java.lang.Float">
+            <column name="POIDSSB" precision="12" scale="0" />
+        </property>
+        <property name="fcsb" type="java.lang.Float">
+            <column name="FCSB" precision="12" scale="0" />
+        </property>
+        <property name="fcciblesb" type="java.lang.Float">
+            <column name="FCCIBLESB" precision="12" scale="0" />
+        </property>
+        <property name="fcallongesbev1" type="java.lang.Float">
+            <column name="FCALLONGESBEV1" precision="12" scale="0" />
+        </property>
+        <property name="fcallongesbev2" type="java.lang.Float">
+            <column name="FCALLONGESBEV2" precision="12" scale="0" />
+        </property>
+        <property name="fcflexsbev1" type="java.lang.Float">
+            <column name="FCFLEXSBEV1" precision="12" scale="0" />
+        </property>
+        <property name="fcflexsbev2" type="java.lang.Float">
+            <column name="FCFLEXSBEV2" precision="12" scale="0" />
+        </property>
+        <property name="fcexallongesbev1" type="java.lang.Float">
+            <column name="FCEXALLONGESBEV1" precision="12" scale="0" />
+        </property>
+        <property name="fcexallongesbev2" type="java.lang.Float">
+            <column name="FCEXALLONGESBEV2" precision="12" scale="0" />
+        </property>
+        <property name="mbras" type="java.lang.Float">
+            <column name="MBRAS" precision="12" scale="0" />
+        </property>
+        <property name="mpoitrine" type="java.lang.Float">
+            <column name="MPOITRINE" precision="12" scale="0" />
+        </property>
+        <property name="mtaille" type="java.lang.Float">
+            <column name="MTAILLE" precision="12" scale="0" />
+        </property>
+        <property name="mhanches" type="java.lang.Float">
+            <column name="MHANCHES" precision="12" scale="0" />
+        </property>
+        <property name="mcuisses" type="java.lang.Float">
+            <column name="MCUISSES" precision="12" scale="0" />
+        </property>
+        <set name="evaluerexcercices" table="EVALUEREXCERCICE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDSB" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Evaluerexcercice" />
+        </set>
+    </class>
+</hibernate-mapping>

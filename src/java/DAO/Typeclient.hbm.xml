@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.Typeclient" table="TYPECLIENT" catalog="db_21401119" optimistic-lock="version">
+        <id name="idtc" type="java.lang.Integer">
+            <column name="IDTC" />
+            <generator class="identity" />
+        </id>
+        <property name="libtc" type="string">
+            <column name="LIBTC" length="32" />
+        </property>
+        <set name="clients" table="CLIENT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDTC" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Client" />
+        </set>
+    </class>
+</hibernate-mapping>

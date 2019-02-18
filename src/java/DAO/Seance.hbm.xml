@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.Seance" table="SEANCE" catalog="db_21401119" optimistic-lock="version">
+        <id name="idsc" type="java.lang.Integer">
+            <column name="IDSC" />
+            <generator class="identity" />
+        </id>
+        <set name="seanceprogammes" table="SEANCEPROGAMME" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDSC" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Seanceprogamme" />
+        </set>
+        <set name="affecterscs" table="AFFECTERSC" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDSC" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Affectersc" />
+        </set>
+        <set name="seancebilans" table="SEANCEBILAN" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDSC" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Seancebilan" />
+        </set>
+    </class>
+</hibernate-mapping>

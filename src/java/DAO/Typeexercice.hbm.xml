@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 18 f?vr. 2019 11:30:37 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DAO.Typeexercice" table="TYPEEXERCICE" catalog="db_21401119" optimistic-lock="version">
+        <id name="idtypeex" type="java.lang.Integer">
+            <column name="IDTYPEEX" />
+            <generator class="identity" />
+        </id>
+        <property name="libtypeex" type="string">
+            <column name="LIBTYPEEX" length="32" />
+        </property>
+        <property name="imgtypeex" type="string">
+            <column name="IMGTYPEEX" length="32" />
+        </property>
+        <property name="objtypeex" type="string">
+            <column name="OBJTYPEEX" length="32" />
+        </property>
+        <property name="destypeex" type="string">
+            <column name="DESTYPEEX" length="32" />
+        </property>
+        <set name="avoirResultats" table="AVOIR_RESULTAT" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDTYPEEX" not-null="true" />
+            </key>
+            <one-to-many class="DAO.AvoirResultat" />
+        </set>
+        <set name="evaluerexcercices" table="EVALUEREXCERCICE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDTYPEEX" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Evaluerexcercice" />
+        </set>
+        <set name="niveaus" table="POSSEDER" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="IDTYPEEX" not-null="true" />
+            </key>
+            <many-to-many entity-name="DAO.Niveau">
+                <column name="LIBNIV" length="32" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="contenirexes" table="CONTENIREX" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDTYPEEX" not-null="true" />
+            </key>
+            <one-to-many class="DAO.Contenirex" />
+        </set>
+    </class>
+</hibernate-mapping>
